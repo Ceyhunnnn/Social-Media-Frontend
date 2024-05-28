@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.input {
+    @apply text-gray-50 rounded-normal placeholder:text-gray-50 text-sm px-4 py-2 border border-gray-40 outline-none w-full
+  }
