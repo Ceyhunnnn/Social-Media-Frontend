@@ -2,7 +2,7 @@ const routes = {
   auth: "/",
   feed: "/feed",
   profile: "/profile",
-  messages: "/messages",
-  notifications: "/notifications",
+  message: "/message",
+  notification: "/notification",
 };
 export default routes;

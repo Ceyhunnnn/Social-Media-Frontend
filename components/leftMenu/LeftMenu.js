@@ -38,11 +38,11 @@ const LeftMenu = () => {
     {
       id: 2,
       title: "Message",
-      url: routes.messages,
+      url: routes.message,
       icon: (
         <Message
           className={`fill-white  ${
-            pathname === routes.messages ? "stroke-black-90" : "stroke-black-60"
+            pathname === routes.message ? "stroke-black-90" : "stroke-black-60"
           }`}
         />
       ),
@@ -50,11 +50,11 @@ const LeftMenu = () => {
     {
       id: 3,
       title: "Notifications",
-      url: routes.notifications,
+      url: routes.notification,
       icon: (
         <Notification
           className={`fill-white  ${
-            pathname === routes.notifications
+            pathname === routes.notification
               ? "stroke-black-90"
               : "stroke-black-60"
           }`}
@@ -65,7 +65,7 @@ const LeftMenu = () => {
   return (
     <div className="w-[290px] rounded-normal border h-fit">
       <Cover />
-      <div className="-mt-5 px-8">
+      <div className="-mt-7 px-8">
         <Profile />
       </div>
       <div className="my-6 px-8">
@@ -73,11 +73,13 @@ const LeftMenu = () => {
         <h2 className="text-black-80 text-xs ">Software Engineer</h2>
         <div className="mt-10 mb-8">
           <ul className="flex flex-col gap-y-6">
-            {leftMenuItems.map((left) => (
+            {leftMenuItems.map((left, index) => (
               <Link
                 key={left.id}
                 href={left.url}
-                className="flex gap-x-4 items-center"
+                className={`flex gap-x-4 items-center ${
+                  !(index >= 3) && "border-b border-white-30 pb-2"
+                }`}
               >
                 <div>{left.icon}</div>
                 <p

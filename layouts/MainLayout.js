@@ -1,4 +1,4 @@
-import LeftMenu from "@/components/account/leftMenu/LeftMenu";
+import LeftMenu from "@/components/leftMenu/LeftMenu";
 import Header from "@/components/header/Header";
 
 const MainLayout = ({ children }) => {
