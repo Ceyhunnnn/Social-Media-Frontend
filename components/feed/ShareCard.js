@@ -9,7 +9,7 @@ const ShareCard = () => {
         <input
           type="text"
           placeholder="What's on your mind?"
-          className="border-b border-gray-40 placeholder:text-black-30 text-black-30 w-full outline-none pb-5 mt-4"
+          className="border-b border-gray-40 placeholder:text-black-30 text-sm text-black-30 w-full outline-none pb-5 mt-4"
         />
       </div>
       <div className="flex items-center justify-between pl-14">
