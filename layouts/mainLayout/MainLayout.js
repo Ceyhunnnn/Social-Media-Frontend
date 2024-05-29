@@ -8,8 +8,7 @@ const MainLayout = ({ children }) => {
   const { pathname } = useRouter();
   const rightContent = {
     "/feed": <SuggesstedFriends />,
-    "/message": <p>message</p>,
-    "/notification": <p>notification</p>,
+    "/notification": <SuggesstedFriends />,
   };
   return (
     <>
