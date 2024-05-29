@@ -5,7 +5,7 @@ import Input from "../input/Input";
 
 const Header = () => {
   return (
-    <header className="bg-white h-20 w-full flex justify-center items-center px-2">
+    <header className="bg-white h-20 w-full flex justify-center items-center px-2 sticky top-0 shadow">
       <div className="max-w-7xl flex justify-between w-full py-5">
         <div className="flex gap-x-4 items-center">
           <Logo />

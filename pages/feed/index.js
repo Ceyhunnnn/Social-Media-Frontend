@@ -1,5 +1,5 @@
 import Feed from "@/components/feed/Feed";
-import MainLayout from "@/layouts/MainLayout";
+import MainLayout from "@/layouts/mainLayout/MainLayout";
 
 const index = () => {
   return (

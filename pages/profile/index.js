@@ -1,5 +1,5 @@
 import Profile from "@/components/profile/Profile";
-import MainLayout from "@/layouts/MainLayout";
+import MainLayout from "@/layouts/mainLayout/MainLayout";
 
 const index = () => {
   return (

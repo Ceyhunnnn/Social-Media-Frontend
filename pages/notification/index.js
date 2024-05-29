@@ -1,5 +1,5 @@
 import Notification from "@/components/notification/Notification";
-import MainLayout from "@/layouts/MainLayout";
+import MainLayout from "@/layouts/mainLayout/MainLayout";
 
 const index = () => {
   return (

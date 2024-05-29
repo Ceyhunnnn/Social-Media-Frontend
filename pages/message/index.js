@@ -1,5 +1,5 @@
 import Message from "@/components/message/Message";
-import MainLayout from "@/layouts/MainLayout";
+import MainLayout from "@/layouts/mainLayout/MainLayout";
 
 const index = () => {
   return (
