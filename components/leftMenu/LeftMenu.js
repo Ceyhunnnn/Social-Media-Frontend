@@ -63,7 +63,7 @@ const LeftMenu = () => {
     },
   ];
   return (
-    <div className="w-[290px] rounded-normal border h-fit">
+    <div className="w-[292px] rounded-normal border h-fit">
       <Cover />
       <div className="-mt-7 px-8">
         <Profile />
