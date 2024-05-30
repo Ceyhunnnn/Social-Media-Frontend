@@ -9,7 +9,7 @@ const NotificationList = () => {
       content: "test2",
     },
     {
-      id: 0,
+      id: 1,
       title: "test2",
       createdAt: "5 minutes ago",
       content: "test3",

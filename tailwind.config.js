@@ -19,6 +19,7 @@ module.exports = {
         "black-90": "#0C1024",
         "blue-90": "#4C68D5",
         "white-10": "#FAFBFF",
+        "white-20": "#F1F4F9",
       },
       borderRadius: {
         normal: "8px",
