@@ -1,7 +1,7 @@
-import MessageBox from "./MessageBox";
-import MessageBoxEmpty from "./MessageBoxEmpty";
-import MessageList from "./MessageList";
+import MessageBoxEmpty from "./MessageBox/MessageBoxEmpty";
 import { useState } from "react";
+import MessageList from "./MessageList/MessageList";
+import MessageBox from "./MessageBox/MessageBox";
 
 const Message = () => {
   const [selectedMessage, setSelectedMessage] = useState(null);

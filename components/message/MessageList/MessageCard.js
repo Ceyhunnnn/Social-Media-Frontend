@@ -1,4 +1,4 @@
-import Profile from "../icons/Profile";
+import Profile from "@/components/icons/Profile";
 
 const MessageCard = ({
   name,

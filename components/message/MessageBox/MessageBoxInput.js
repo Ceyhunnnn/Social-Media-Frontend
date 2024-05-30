@@ -1,6 +1,6 @@
-import Profile from "../icons/Profile";
-import Send from "../icons/Send";
-import Input from "../input/Input";
+import Input from "@/components/input/Input";
+import Profile from "@/components/icons/Profile";
+import Send from "@/components/icons/Send";
 const MessageBoxInput = () => {
   return (
     <div className="absolute bottom-0 w-full">
