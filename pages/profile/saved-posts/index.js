@@ -1,4 +1,4 @@
-import Profile from "@/components/profile/Profile";
+import SavedPosts from "@/components/profile/savedPosts/SavedPosts";
 import MainLayout from "@/layouts/mainLayout/MainLayout";
 import ProfileLayout from "@/layouts/profileLayout/ProfileLayout";
 
@@ -6,7 +6,7 @@ const index = () => {
   return (
     <MainLayout>
       <ProfileLayout>
-        <Profile />
+        <SavedPosts />
       </ProfileLayout>
     </MainLayout>
   );
