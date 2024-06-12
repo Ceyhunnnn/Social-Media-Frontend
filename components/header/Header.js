@@ -4,6 +4,7 @@ import Person from "../icons/Person";
 import Search from "../icons/Search";
 import Input from "../input/Input";
 import routes from "@/routes/routes";
+import { signOut } from "next-auth/react";
 
 const Header = () => {
   return (
@@ -16,7 +17,14 @@ const Header = () => {
         <div className="max-w-[582px] w-full mr-16">
           <Input type="text" icon={<Search />} placeholder="Search" />
         </div>
-        <div className="flex gap-x-4 text-sm text-black-80 items-center">
+        <div
+          className="flex gap-x-4 cursor-pointer text-sm text-black-80 items-center"
+          onClick={() => {
+            signOut({
+              callbackUrl: routes.auth,
+            });
+          }}
+        >
           <p>Logout</p>
           <Person />
         </div>
