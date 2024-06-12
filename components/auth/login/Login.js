@@ -1,10 +1,31 @@
 import Google from "@/components/icons/Google";
 import Input from "@/components/input/Input";
 import routes from "@/routes/routes";
+import { api } from "@/service/api";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 
 const Login = ({ setCurrentPage }) => {
   const router = useRouter();
+  const login = async () => {
+    const body = {
+      email: "test@gmail.com",
+      password: "test123",
+      redirect: false,
+    };
+    const { response } = await api({ url: "login", body, type: "post" });
+    if (response.success) {
+      const { error } = await signIn("credentials", {
+        redirect: false,
+        ...{
+          token: response?.token,
+        },
+      });
+      if (!error) {
+        router.push(routes.feed);
+      }
+    }
+  };
   return (
     <div className="w-full flex flex-col gap-y-5">
       <button className="flex items-center justify-center gap-x-2 border border-gray-30 py-2 rounded-normal">
@@ -17,13 +38,14 @@ const Login = ({ setCurrentPage }) => {
         <hr className="w-full" />
       </div>
       <div className="flex flex-col mt-5 gap-y-5 text-gray-50 text-sm">
-        <Input type="text" className="input" placeholder="Email" />
-        <Input type="password" className="input" placeholder="Password" />
+        <Input type="text" placeholder="Email" />
+        <Input type="password" placeholder="Password" />
         <button className="text-xs text-right">Forget Password?</button>
         <button
           className="bg-black-90 text-white text-sm rounded-normal py-2"
           onClick={() => {
-            router.push(routes.feed);
+            // router.push(routes.feed);
+            login();
           }}
         >
           Log in
