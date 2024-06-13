@@ -1,7 +1,7 @@
 import axiosClient from "./axios";
 import { getSession } from "next-auth/react";
 
-export const getHeaders = async () => {
+const getHeaders = async () => {
   const session = await getSession();
   let headers = {
     "Content-Type": "application/json",
