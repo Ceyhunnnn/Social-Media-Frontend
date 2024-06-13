@@ -13,7 +13,6 @@ const nextConfig = {
     API_URL: "http://localhost:3001/api/",
     PUBLIC_URL: publicUrl,
     NEXTAUTH_SECRET: "Test123",
-    NEXTAUTH_URL: publicUrl,
   },
 };
 
