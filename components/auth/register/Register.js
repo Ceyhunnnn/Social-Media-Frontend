@@ -105,6 +105,7 @@ const Register = ({ setCurrentPage }) => {
             I agree to the Terms and Privacy Policy.
           </button>
           <button
+            type="submit"
             className="bg-black-90 text-white text-sm rounded-normal py-2"
             onClick={registerForm.handleSubmit}
           >

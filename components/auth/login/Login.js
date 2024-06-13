@@ -75,6 +75,7 @@ const Login = ({ setCurrentPage }) => {
           )}
           <button className="text-xs text-right">Forget Password?</button>
           <button
+            type="submit"
             className="bg-black-90 text-white text-sm rounded-normal py-2"
             onClick={loginForm.handleSubmit}
           >
