@@ -14,7 +14,7 @@ const Login = ({ setCurrentPage }) => {
       redirect: false,
     };
     const { response } = await api({ url: "login", body, type: "post" });
-    if (response.success) {
+    if (response?.success) {
       const { error } = await signIn("credentials", {
         redirect: false,
         ...{

@@ -7,8 +7,10 @@ import ProfileMenu from "@/components/icons/ProfileMenu";
 import routes from "@/routes/routes";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 const LeftMenu = () => {
+  const { user } = useSelector((state) => state.globalState);
   const { pathname } = useRouter();
   const leftMenuItems = [
     {
@@ -69,8 +71,10 @@ const LeftMenu = () => {
         <Profile />
       </div>
       <div className="my-6 px-8">
-        <h1 className="text-black-90 text-sm">Robert Fox</h1>
-        <h2 className="text-black-80 text-xs ">Software Engineer</h2>
+        <h1 className="text-black-90 text-sm">
+          {user?.firstName} {user?.lastName}
+        </h1>
+        <h2 className="text-black-80 text-xs ">{user?.email}</h2>
         <div className="mt-10 mb-8">
           <ul className="flex flex-col gap-y-6">
             {leftMenuItems.map((left, index) => (
