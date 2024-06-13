@@ -5,8 +5,10 @@ import Search from "../icons/Search";
 import Input from "../input/Input";
 import routes from "@/routes/routes";
 import { signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const router = useRouter();
   return (
     <header className="bg-white h-20 w-full flex justify-center items-center px-2 sticky top-0 shadow">
       <div className="max-w-7xl flex justify-between w-full py-5">
@@ -20,8 +22,8 @@ const Header = () => {
         <div
           className="flex gap-x-4 cursor-pointer text-sm text-black-80 items-center"
           onClick={() => {
-            signOut({
-              callbackUrl: "/",
+            signOut({ redirect: false }).then(() => {
+              router.push(routes.auth); // Redirect to the dashboard page after signing out
             });
           }}
         >
