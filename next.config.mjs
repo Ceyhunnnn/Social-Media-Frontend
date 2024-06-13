@@ -5,7 +5,7 @@ let publicUrl;
 if (process.env.NODE_ENV == "development") {
   publicUrl = "http://localhost:3000";
 } else {
-  publicUrl = "";
+  publicUrl = "https://main--nextjs-social.netlify.app";
 }
 const nextConfig = {
   reactStrictMode: true,

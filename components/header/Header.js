@@ -21,7 +21,7 @@ const Header = () => {
           className="flex gap-x-4 cursor-pointer text-sm text-black-80 items-center"
           onClick={() => {
             signOut({
-              callbackUrl: routes.auth,
+              callbackUrl: process.env.PUBLIC_URL,
             });
           }}
         >
