@@ -21,7 +21,7 @@ export const api = async ({ type = "get", body, url }) => {
     return { response: response?.data, responseHeaders: response?.headers };
   } catch (err) {
     return {
-      error: err,
+      error: err?.response?.data?.message,
     };
   }
 };

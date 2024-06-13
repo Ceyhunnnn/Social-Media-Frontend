@@ -2,18 +2,27 @@ import Google from "@/components/icons/Google";
 import Input from "@/components/input/Input";
 import routes from "@/routes/routes";
 import { api } from "@/service/api";
+import { initialValuesLogin, validationLogin } from "@/utils/validations/auth";
+import { useFormik } from "formik";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 
 const Login = ({ setCurrentPage }) => {
   const router = useRouter();
-  const login = async () => {
+
+  const loginForm = useFormik({
+    initialValues: initialValuesLogin,
+    validationSchema: validationLogin,
+    onSubmit: (values) => login(values),
+  });
+
+  const login = async (values) => {
     const body = {
-      email: "test@gmail.com",
-      password: "test123",
+      email: values?.email,
+      password: values?.password,
       redirect: false,
     };
-    const { response } = await api({ url: "login", body, type: "post" });
+    const { response, error } = await api({ url: "login", body, type: "post" });
     if (response?.success) {
       const { error } = await signIn("credentials", {
         redirect: false,
@@ -23,6 +32,9 @@ const Login = ({ setCurrentPage }) => {
       });
       if (!error) {
         router.push(routes.feed);
+      }
+    } else {
+      if (error) {
       }
     }
   };
@@ -37,29 +49,48 @@ const Login = ({ setCurrentPage }) => {
         <p className="text-gray-50 text-sm">or</p>
         <hr className="w-full" />
       </div>
-      <div className="flex flex-col mt-5 gap-y-5 text-gray-50 text-sm">
-        <Input type="text" placeholder="Email" />
-        <Input type="password" placeholder="Password" />
-        <button className="text-xs text-right">Forget Password?</button>
-        <button
-          className="bg-black-90 text-white text-sm rounded-normal py-2"
-          onClick={() => {
-            // router.push(routes.feed);
-            login();
-          }}
-        >
-          Log in
-        </button>
-        <div className="text-center mt-4">
-          Don't have an account?{" "}
+      <form onSubmit={loginForm.handleSubmit}>
+        <div className="flex flex-col mt-5 gap-y-3 text-gray-50 text-sm">
+          <Input
+            name="email"
+            type="text"
+            placeholder="Email"
+            value={loginForm.values.email}
+            onChange={loginForm.handleChange}
+            onBlur={() => loginForm.setFieldTouched("email", true)}
+          />
+          {loginForm.errors.email && loginForm.touched.email && (
+            <p className="text-xs text-red-500">{loginForm.errors.email}</p>
+          )}
+          <Input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={loginForm.values.password}
+            onChange={loginForm.handleChange}
+            onBlur={() => loginForm.setFieldTouched("password", true)}
+          />
+          {loginForm.errors.password && loginForm.touched.password && (
+            <p className="text-xs text-red-500">{loginForm.errors.password}</p>
+          )}
+          <button className="text-xs text-right">Forget Password?</button>
           <button
-            className="text-black-80"
-            onClick={() => setCurrentPage("register")}
+            className="bg-black-90 text-white text-sm rounded-normal py-2"
+            onClick={loginForm.handleSubmit}
           >
-            Sign up
+            Log in
           </button>
+          <div className="text-center mt-4">
+            Don't have an account?{" "}
+            <button
+              className="text-black-80"
+              onClick={() => setCurrentPage("register")}
+            >
+              Sign up
+            </button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 };
