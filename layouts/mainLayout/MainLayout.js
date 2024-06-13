@@ -6,6 +6,7 @@ import SuggesstedFriends from "@/components/suggesstedFriends/SuggesstedFriends"
 const MainLayout = ({ children }) => {
   const { pathname } = useRouter();
 
+  //I can get user data from db in here
   return (
     <>
       <Header />
