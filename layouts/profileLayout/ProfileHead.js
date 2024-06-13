@@ -2,8 +2,11 @@ import Profile from "@/components/icons/Profile";
 import routes from "@/routes/routes";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 const ProfileHead = () => {
+  const { user } = useSelector((state) => state.globalState);
+
   const { pathname } = useRouter();
   const contentPageList = [
     {
@@ -29,8 +32,8 @@ const ProfileHead = () => {
           <Profile />
           <div className="flex flex-col gap-y-1">
             <h1 className="text-black-80 font-semibold">
-              Robert Fox{" "}
-              <span className="text-xs text-gray-50"> / @robert</span>
+              {user?.firstName} {user?.lastName}{" "}
+              <span className="text-xs text-gray-50"> / {user?.email}</span>
             </h1>
             <h2 className="text-xs text-black-60">Software Engineer</h2>
           </div>

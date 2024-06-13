@@ -14,9 +14,10 @@ const General = () => {
         </label>
         <input type="file" className="hidden" id="image" />
       </div>
-      <Input placeholder="Full name" />
-      <Input placeholder="Username" />
-      <Input placeholder="Surname" />
+      <Input placeholder="First Name" />
+      <Input placeholder="Last name" />
+      <Input placeholder="Title" />
+      <Input placeholder="E-Mail" />
       <button className="bg-black-90 text-white text-sm flex justify-center items-center p-3 rounded-normal">
         Save Changes
       </button>

@@ -2,7 +2,7 @@ import LeftMenu from "@/components/leftMenu/LeftMenu";
 import Header from "@/components/header/Header";
 import { useRouter } from "next/router";
 import SuggesstedFriends from "@/components/suggesstedFriends/SuggesstedFriends";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getUserDataFromDb } from "@/store/globalActions";
 import { useSelector } from "react-redux";
 
@@ -11,7 +11,9 @@ const MainLayout = ({ children }) => {
   const { pathname } = useRouter();
 
   useEffect(() => {
-    getUserDataFromDb();
+    if (!user) {
+      getUserDataFromDb();
+    }
   }, []);
   return (
     <>

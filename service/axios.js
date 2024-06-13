@@ -11,7 +11,7 @@ export const getHeaders = async () => {
   return headers;
 };
 
-const axiosClient = axios.create({
+const axiosClient = await axios.create({
   baseURL: process.env.API_URL,
   headers: await getHeaders(),
   withCredentials: false,
