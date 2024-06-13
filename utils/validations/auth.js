@@ -11,11 +11,11 @@ export const validationLogin = object({
 });
 
 export const initialValuesRegister = {
-  firstName: "",
-  lastName: "",
-  title: "",
+  firstName: "test",
+  lastName: "test",
+  title: "frontend",
   email: "",
-  password: "",
+  password: "test123",
 };
 export const validationRegister = object({
   firstName: string().required("Lütfen adınızı giriniz."),

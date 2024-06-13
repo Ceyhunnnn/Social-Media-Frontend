@@ -1,5 +1,6 @@
 import Google from "@/components/icons/Google";
 import Input from "@/components/input/Input";
+import { api } from "@/service/api";
 import {
   initialValuesRegister,
   validationRegister,
@@ -13,7 +14,18 @@ const Register = ({ setCurrentPage }) => {
     onSubmit: (values) => register(values),
   });
 
-  const register = async () => {};
+  const register = async (values) => {
+    const { response, error } = await api({
+      url: "register",
+      body: values,
+      type: "post",
+    });
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Response : ", response?.message);
+    }
+  };
 
   return (
     <div className="w-full flex flex-col gap-y-5">
@@ -27,7 +39,7 @@ const Register = ({ setCurrentPage }) => {
         <hr className="w-full" />
       </div>
       <form onSubmit={registerForm.handleSubmit}>
-        <div className="flex flex-col mt-5 gap-y-3 text-gray-50 text-sm">
+        <div className="flex flex-col mt-5 gap-y-2 text-gray-50 text-sm">
           <Input
             placeholder="First Name"
             name="firstName"
