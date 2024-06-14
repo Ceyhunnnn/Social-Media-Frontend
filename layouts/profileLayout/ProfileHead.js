@@ -35,7 +35,7 @@ const ProfileHead = () => {
               {user?.firstName} {user?.lastName}{" "}
               <span className="text-xs text-gray-50"> / {user?.email}</span>
             </h1>
-            <h2 className="text-xs text-black-60">Software Engineer</h2>
+            <h2 className="text-xs text-black-60">{user?.title}</h2>
           </div>
         </div>
         <div className="flex items-center gap-x-6">

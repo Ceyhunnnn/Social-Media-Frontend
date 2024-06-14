@@ -74,7 +74,7 @@ const LeftMenu = () => {
         <h1 className="text-black-90 text-sm">
           {user?.firstName} {user?.lastName}
         </h1>
-        <h2 className="text-black-80 text-xs ">{user?.email}</h2>
+        <h2 className="text-black-80 text-xs ">{user?.title}</h2>
         <div className="mt-10 mb-8">
           <ul className="flex flex-col gap-y-6">
             {leftMenuItems.map((left, index) => (
