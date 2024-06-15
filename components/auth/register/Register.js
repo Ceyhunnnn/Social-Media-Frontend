@@ -5,14 +5,10 @@ import {
   initialValuesRegister,
   validationRegister,
 } from "@/utils/validations/auth";
-import { Spinner } from "@material-tailwind/react";
 import { useFormik } from "formik";
-import { useState } from "react";
 import toast from "react-hot-toast";
 
 const Register = ({ setCurrentPage }) => {
-  const [isLoading, setIsLoading] = useState(false);
-
   const registerForm = useFormik({
     initialValues: initialValuesRegister,
     validationSchema: validationRegister,
@@ -20,7 +16,6 @@ const Register = ({ setCurrentPage }) => {
   });
 
   const register = async (values) => {
-    setIsLoading(true);
     const { response, error } = await api({
       url: "register",
       body: values,
@@ -31,7 +26,6 @@ const Register = ({ setCurrentPage }) => {
     } else {
       toast.success("Hesap Başarıyla oluşturulmuştur.");
     }
-    setIsLoading(false);
   };
 
   return (
@@ -116,11 +110,7 @@ const Register = ({ setCurrentPage }) => {
           >
             Register
           </button>
-          {isLoading && (
-            <div className="flex justify-center items-center my-3">
-              <Spinner />
-            </div>
-          )}
+
           <div className="text-center mt-4">
             Have an account?{" "}
             <button

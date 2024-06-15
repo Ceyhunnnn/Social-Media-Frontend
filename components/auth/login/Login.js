@@ -3,15 +3,12 @@ import Input from "@/components/input/Input";
 import routes from "@/routes/routes";
 import { api } from "@/service/api";
 import { initialValuesLogin, validationLogin } from "@/utils/validations/auth";
-import { Spinner } from "@material-tailwind/react";
 import { useFormik } from "formik";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import toast from "react-hot-toast";
 
 const Login = ({ setCurrentPage }) => {
-  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const loginForm = useFormik({
@@ -21,7 +18,6 @@ const Login = ({ setCurrentPage }) => {
   });
 
   const login = async (values) => {
-    setIsLoading(true);
     const body = {
       email: values?.email,
       password: values?.password,
@@ -43,7 +39,6 @@ const Login = ({ setCurrentPage }) => {
         toast.error(error);
       }
     }
-    setIsLoading(false);
   };
   return (
     <div className="w-full flex flex-col gap-y-5">
@@ -89,11 +84,6 @@ const Login = ({ setCurrentPage }) => {
           >
             Log in
           </button>
-          {isLoading && (
-            <div className="flex justify-center items-center my-3">
-              <Spinner />
-            </div>
-          )}
           <div className="text-center mt-4">
             Don't have an account?{" "}
             <button
