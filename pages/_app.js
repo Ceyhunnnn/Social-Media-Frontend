@@ -11,9 +11,9 @@ export default function App({
 }) {
   return (
     <ThemeProvider>
-      <Toaster />
       <SessionProvider session={session}>
         <Provider store={store}>
+          <Toaster />
           <Component {...pageProps} />
         </Provider>
       </SessionProvider>
