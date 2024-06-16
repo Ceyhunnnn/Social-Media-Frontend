@@ -7,8 +7,29 @@ import Dots from "../icons/Dots";
 import Like from "../icons/Like";
 import Profile from "../icons/Profile";
 import moment from "moment";
+import { api } from "@/service/api";
+import toast from "react-hot-toast";
 
-const PostCard = ({ firstName, lastName, content, date, title, isUser }) => {
+const PostCard = ({
+  firstName,
+  lastName,
+  content,
+  date,
+  title,
+  isUser,
+  id,
+}) => {
+  const deletePost = async () => {
+    const { response, error } = await api({
+      url: `/deleteUserPost/${id}`,
+      type: "delete",
+    });
+    if (error) {
+      toast.error(error);
+    } else {
+      toast.success(response?.message);
+    }
+  };
   return (
     <div className="w-full bg-white rounded-normal border border-gray-30 px-8 py-4">
       <div className="flex justify-between items-center">
@@ -31,7 +52,9 @@ const PostCard = ({ firstName, lastName, content, date, title, isUser }) => {
               </PopoverHandler>
               <PopoverContent className="p-3">
                 <div>
-                  <button className="text-sm text-red-500">Delete</button>
+                  <button onClick={deletePost} className="text-sm text-red-500">
+                    Delete
+                  </button>
                 </div>
               </PopoverContent>
             </Popover>

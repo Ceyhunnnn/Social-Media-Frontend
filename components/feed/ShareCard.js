@@ -53,7 +53,7 @@ const ShareCard = () => {
           disabled={!text}
           type="button"
           onClick={createPost}
-          className="bg-blue-90 lowercase   text-white text-sm rounded-full flex justify-center items-center w-12 h-8"
+          className="bg-blue-90 lowercase hover:cursor-pointer  text-white text-sm rounded-full flex justify-center items-center w-12 h-8"
         >
           Post
         </button>
