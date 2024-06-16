@@ -2,12 +2,16 @@ import { api } from "@/service/api";
 import PostCard from "../postCard/PostCard";
 import ShareCard from "./ShareCard";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Feed = () => {
+  const { user } = useSelector((state) => state.globalState);
+
   const [topPosts, setTopPosts] = useState(null);
   const getFeedPosts = async () => {
     const { response, error } = await api({ url: "getTopPosts" });
     setTopPosts(response?.data);
+    console.log(response?.data);
   };
   useEffect(() => {
     getFeedPosts();
@@ -24,6 +28,7 @@ const Feed = () => {
             content={top.content}
             title={top.title}
             date={top.createdAt}
+            isUser={top.userId === user?._id}
           />
         ))}
     </div>

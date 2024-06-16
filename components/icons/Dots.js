@@ -1,4 +1,4 @@
-const Dots = ({ onClick }) => {
+const Dots = ({ onClick, className }) => {
   return (
     <svg
       width="20"
@@ -6,6 +6,7 @@ const Dots = ({ onClick }) => {
       viewBox="0 0 20 21"
       fill="none"
       onClick={onClick}
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

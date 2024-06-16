@@ -1,8 +1,14 @@
+import {
+  Popover,
+  PopoverHandler,
+  PopoverContent,
+} from "@material-tailwind/react";
 import Dots from "../icons/Dots";
 import Like from "../icons/Like";
 import Profile from "../icons/Profile";
 import moment from "moment";
-const PostCard = ({ firstName, lastName, content, date, title }) => {
+
+const PostCard = ({ firstName, lastName, content, date, title, isUser }) => {
   return (
     <div className="w-full bg-white rounded-normal border border-gray-30 px-8 py-4">
       <div className="flex justify-between items-center">
@@ -16,7 +22,20 @@ const PostCard = ({ firstName, lastName, content, date, title }) => {
           </div>
         </div>
         <div className="flex flex-col gap-y-1 items-end">
-          <Dots />
+          {isUser && (
+            <Popover placement="bottom-end">
+              <PopoverHandler>
+                <button>
+                  <Dots className="cursor-pointer" />
+                </button>
+              </PopoverHandler>
+              <PopoverContent className="p-3">
+                <div>
+                  <button className="text-sm text-red-500">Delete</button>
+                </div>
+              </PopoverContent>
+            </Popover>
+          )}
           <p className="text-black-40 text-xs">
             {date && moment(date).format("l")}
           </p>

@@ -10,13 +10,13 @@ export default function App({
   pageProps: { session, ...pageProps },
 }) {
   return (
-    <ThemeProvider>
-      <SessionProvider session={session}>
-        <Provider store={store}>
+    <SessionProvider session={session}>
+      <Provider store={store}>
+        <ThemeProvider>
           <Toaster />
           <Component {...pageProps} />
-        </Provider>
-      </SessionProvider>
-    </ThemeProvider>
+        </ThemeProvider>
+      </Provider>
+    </SessionProvider>
   );
 }

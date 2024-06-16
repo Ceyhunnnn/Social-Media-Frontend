@@ -29,6 +29,7 @@ const Profile = () => {
             content={post.content}
             title={post.title}
             date={post.createdAt}
+            isUser={post.userId === user?._id}
           />
         ))}
       {posts?.length <= 0 && (

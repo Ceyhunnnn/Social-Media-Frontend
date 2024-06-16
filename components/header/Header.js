@@ -30,8 +30,7 @@ const Header = () => {
           <div
             className="flex gap-x-4 cursor-pointer text-sm text-black-80 items-center"
             onClick={() => {
-              // setDialogValue("exitConfirm");
-              logout();
+              setDialogValue("exitConfirm");
             }}
           >
             <p>Logout</p>
@@ -39,12 +38,12 @@ const Header = () => {
           </div>
         </div>
       </header>
-      {/* <ConfirmDialog
+      <ConfirmDialog
         openKey="exitConfirm"
         title="Exit from app"
         desc="Are you sure exit from application?"
         confirm={logout}
-      /> */}
+      />
     </>
   );
 };

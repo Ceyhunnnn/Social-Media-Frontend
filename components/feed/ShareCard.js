@@ -49,14 +49,14 @@ const ShareCard = () => {
           <Media />
           <p className="text-black-80 text-sm">Add Media</p>
         </div>
-        <Button
+        <button
           disabled={!text}
           type="button"
           onClick={createPost}
           className="bg-blue-90 lowercase   text-white text-sm rounded-full flex justify-center items-center w-12 h-8"
         >
           Post
-        </Button>
+        </button>
       </div>
     </div>
   );
