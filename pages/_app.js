@@ -4,6 +4,8 @@ import { Provider } from "react-redux";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@material-tailwind/react";
 import { Toaster } from "react-hot-toast";
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
 
 export default function App({
   Component,
@@ -11,12 +13,14 @@ export default function App({
 }) {
   return (
     <SessionProvider session={session}>
-      <Provider store={store}>
-        <ThemeProvider>
-          <Toaster />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </Provider>
+      <main className={inter.className}>
+        <Provider store={store}>
+          <ThemeProvider>
+            <Toaster />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </Provider>
+      </main>
     </SessionProvider>
   );
 }
