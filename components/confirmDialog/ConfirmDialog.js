@@ -17,7 +17,7 @@ const ConfirmDialog = ({ openKey, title, desc, confirm }) => {
   return (
     <Dialog open={dialog === openKey} handler={handleOpen}>
       <DialogHeader>{title}</DialogHeader>
-      <DialogBody>{desc}</DialogBody>
+      <DialogBody className="font-semibold">{desc}</DialogBody>
       <DialogFooter>
         <Button
           variant="text"
