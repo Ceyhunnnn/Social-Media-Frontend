@@ -2,13 +2,17 @@ import { api } from "@/service/api";
 import Media from "../icons/Media";
 import Profile from "../icons/Profile";
 import { useState } from "react";
-import { Button } from "@material-tailwind/react";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
+import { io } from "socket.io-client";
 
 const ShareCard = () => {
+  const socket = io("http://localhost:3001");
   const { user } = useSelector((state) => state.globalState);
   const [text, setText] = useState(null);
+  const sendUpdateRequest = async () => {
+    await socket.emit("createPostData");
+  };
   const createPost = async () => {
     if (text) {
       const body = {
@@ -25,6 +29,7 @@ const ShareCard = () => {
       });
 
       if (!error) {
+        await sendUpdateRequest();
         toast.success(response?.message);
       } else {
         toast.error(err);
