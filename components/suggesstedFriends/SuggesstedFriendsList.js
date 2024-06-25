@@ -1,33 +1,33 @@
+import { useSelector } from "react-redux";
 import SuggesstedFriendsCard from "./SuggesstedFriendsCard";
+import { useEffect } from "react";
+import { api } from "@/service/api";
+import { useDispatch } from "react-redux";
+import { setUsers } from "@/store/globalState";
 
 const SuggesstedFriendsList = () => {
-  const suggesstedList = [
-    {
-      id: 0,
-      name: "Olivia Anderson",
-      job: "Financial Analyst",
-    },
-    {
-      id: 1,
-      name: "Thomas Baker",
-      job: "Computer Engineer",
-    },
-    {
-      id: 2,
-      name: "Lily Lee",
-      job: "Graphic Designer",
-    },
-    {
-      id: 3,
-      name: "Andrew Harris",
-      job: "Data Scientist",
-    },
-  ];
+  const dispatch = useDispatch();
+  const { users } = useSelector((state) => state?.globalState);
+
+  const getSuggesstedUsers = async () => {
+    const { response } = await api({ type: "get", url: "/getAllUsers" });
+    dispatch(setUsers(response?.data));
+  };
+  useEffect(() => {
+    if (!users) {
+      getSuggesstedUsers();
+    }
+  }, [users]);
   return (
     <div className="flex flex-col gap-y-3">
-      {suggesstedList.map((sug) => (
-        <SuggesstedFriendsCard key={sug.id} name={sug.name} job={sug.job} />
-      ))}
+      {users &&
+        users.map((sug) => (
+          <SuggesstedFriendsCard
+            key={sug._id}
+            name={sug.firstName + sug.lastName}
+            job={sug.title}
+          />
+        ))}
     </div>
   );
 };

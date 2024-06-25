@@ -3,6 +3,7 @@ export const dialogAdapter = createEntityAdapter();
 
 const initialState = dialogAdapter.getInitialState({
   user: null,
+  users: null,
 });
 const globalStateSlice = createSlice({
   name: "global",
@@ -11,8 +12,11 @@ const globalStateSlice = createSlice({
     setUser(state, action) {
       state.user = action.payload;
     },
+    setUsers(state, action) {
+      state.users = action.payload;
+    },
   },
 });
 
-export const { setUser } = globalStateSlice.actions;
+export const { setUser, setUsers } = globalStateSlice.actions;
 export default globalStateSlice.reducer;

@@ -44,7 +44,7 @@ const ShareCard = () => {
         <textarea
           type="text"
           onChange={(e) => setText(e.target.value)}
-          value={text}
+          value={text || ""}
           placeholder="What's on your mind?"
           className="border-b border-gray-40 placeholder:text-black-30 text-sm text-black-30 w-full outline-none pb-5 mt-4 resize-none"
         />
