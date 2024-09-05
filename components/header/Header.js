@@ -7,12 +7,17 @@ import routes from "@/routes/routes";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { setDialogValue } from "@/store/globalActions";
-import ConfirmDialog from "../confirmDialog/ConfirmDialog";
+import { useDispatch } from "react-redux";
+import { setUser, setUsers } from "@/store/globalState";
+import ConfirmDialog from "../global/ConfirmDialog";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const router = useRouter();
   const logout = () => {
     signOut({ redirect: false }).then(() => {
+      dispatch(setUser(null));
+      dispatch(setUsers(null));
       router.push(routes.auth);
     });
   };

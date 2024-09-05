@@ -15,21 +15,25 @@ const ConfirmDialog = ({ openKey, title, desc, confirm }) => {
   };
 
   return (
-    <Dialog open={dialog === openKey} handler={handleOpen}>
-      <DialogHeader>{title}</DialogHeader>
-      <DialogBody className="font-semibold">{desc}</DialogBody>
-      <DialogFooter>
-        <Button
-          variant="text"
-          color="red"
+    <Dialog
+      open={dialog === openKey}
+      handler={handleOpen}
+      size="xs"
+      className="rounded-2xl"
+    >
+      <DialogHeader className="font-semibold text-lg text-[#333333]  px-3 pt-3 pb-1">
+        {title}
+      </DialogHeader>
+      <DialogBody className="font-normal py-0 px-3">{desc}</DialogBody>
+      <DialogFooter className="flex items-cente gap-x-3">
+        <button
+          className="mr-1 text-[#888888] bg-transparent font-normal"
           onClick={handleOpen}
-          className="mr-1"
         >
-          <span>Cancel</span>
-        </Button>
-        <Button
-          variant="text"
-          color="green"
+          Cancel
+        </button>
+        <button
+          className="bg-blue-90 text-white py-1 px-4  rounded-md flex justify-center items-center font-normal"
           onClick={() => {
             if (confirm) {
               confirm();
@@ -37,8 +41,8 @@ const ConfirmDialog = ({ openKey, title, desc, confirm }) => {
             handleOpen();
           }}
         >
-          <span>Confirm</span>
-        </Button>
+          Ok
+        </button>
       </DialogFooter>
     </Dialog>
   );

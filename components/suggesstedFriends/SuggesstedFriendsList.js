@@ -10,14 +10,17 @@ const SuggesstedFriendsList = () => {
   const { users } = useSelector((state) => state?.globalState);
 
   const getSuggesstedUsers = async () => {
-    const { response } = await api({ type: "get", url: "/getAllUsers" });
+    const { response } = await api({
+      type: "get",
+      url: "/getSuggesstedFriends",
+    });
     dispatch(setUsers(response?.data));
   };
   useEffect(() => {
     if (!users) {
       getSuggesstedUsers();
     }
-  }, [users]);
+  }, []);
   return (
     <div className="flex flex-col gap-y-3">
       {users &&

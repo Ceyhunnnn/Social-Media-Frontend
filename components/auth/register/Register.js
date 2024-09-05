@@ -25,6 +25,7 @@ const Register = ({ setCurrentPage }) => {
       toast.error(error);
     } else {
       toast.success("Hesap Başarıyla oluşturulmuştur.");
+      registerForm.resetForm();
     }
   };
 

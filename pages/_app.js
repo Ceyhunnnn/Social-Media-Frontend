@@ -4,8 +4,10 @@ import { Provider } from "react-redux";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@material-tailwind/react";
 import { Toaster } from "react-hot-toast";
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
+import { Mulish } from "next/font/google";
+const mulish = Mulish({
+  subsets: ["latin"],
+});
 
 export default function App({
   Component,
@@ -13,7 +15,7 @@ export default function App({
 }) {
   return (
     <SessionProvider session={session}>
-      <main className={inter.className}>
+      <main className={mulish.className}>
         <Provider store={store}>
           <ThemeProvider>
             <Toaster />

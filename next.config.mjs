@@ -11,6 +11,7 @@ const nextConfig = {
   reactStrictMode: true,
   env: {
     API_URL: "http://localhost:3001/api/",
+    API_SOCKET_URL: "http://localhost:3001",
     PUBLIC_URL: publicUrl,
     NEXTAUTH_SECRET: "Test123",
   },

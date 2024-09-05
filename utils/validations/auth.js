@@ -1,7 +1,7 @@
 import { object, string } from "yup";
 export const initialValuesLogin = {
   email: "ceyhun@gmail.com",
-  password: "Ceyhungl55",
+  password: "123123",
 };
 export const validationLogin = object({
   email: string()
