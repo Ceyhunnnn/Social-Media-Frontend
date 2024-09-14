@@ -9,7 +9,6 @@ import Profile from "../icons/Profile";
 import moment from "moment";
 import { api } from "@/service/api";
 import toast from "react-hot-toast";
-import { io } from "socket.io-client";
 
 const PostCard = ({
   firstName,
@@ -20,10 +19,6 @@ const PostCard = ({
   isUser,
   id,
 }) => {
-  const socket = io("http://localhost:3001");
-  const sendUpdateRequest = async () => {
-    await socket.emit("deletePostData");
-  };
   const deletePost = async () => {
     const { response, error } = await api({
       url: `/deleteUserPost/${id}`,
@@ -32,7 +27,6 @@ const PostCard = ({
     if (error) {
       toast.error(error);
     } else {
-      sendUpdateRequest();
       toast.success(response?.message);
     }
   };
