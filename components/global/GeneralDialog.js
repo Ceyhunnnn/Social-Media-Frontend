@@ -25,7 +25,7 @@ const GeneralDialog = ({
     <Dialog
       open={dialog === openKey}
       handler={handleClose}
-      className="outline-none rounded-2xl"
+      className="outline-none rounded-xl"
       size={size || "sm"}
     >
       {(title || isCloseIcon) && (

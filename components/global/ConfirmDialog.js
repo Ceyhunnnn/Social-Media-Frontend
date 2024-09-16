@@ -19,7 +19,7 @@ const ConfirmDialog = ({ openKey, title, desc, confirm }) => {
       open={dialog === openKey}
       handler={handleOpen}
       size="xs"
-      className="rounded-2xl"
+      className="rounded-xl"
     >
       <DialogHeader className="font-semibold text-lg text-[#333333]  px-3 pt-3 pb-1">
         {title}
