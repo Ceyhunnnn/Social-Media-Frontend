@@ -27,7 +27,7 @@ const SuggesstedFriendsList = () => {
         users.map((sug) => (
           <SuggesstedFriendsCard
             key={sug._id}
-            name={sug.firstName + sug.lastName}
+            name={sug.firstName + " " + sug.lastName}
             job={sug.title}
           />
         ))}

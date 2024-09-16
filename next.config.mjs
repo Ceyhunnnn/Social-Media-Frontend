@@ -8,7 +8,7 @@ if (process.env.NODE_ENV == "development") {
   publicUrl = "https://main--nextjs-social.netlify.app";
 }
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   env: {
     API_URL: "http://localhost:3001/api/",
     API_SOCKET_URL: "http://localhost:3001/",
