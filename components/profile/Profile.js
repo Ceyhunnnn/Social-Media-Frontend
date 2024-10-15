@@ -3,41 +3,31 @@ import PostCard from "../postCard/PostCard";
 import { api } from "@/service/api";
 import { useSelector } from "react-redux";
 import EmptyCard from "../emptyCard/EmptyCard";
+import { getUserPosts } from "@/store/globalActions";
 
 const Profile = () => {
-  const { user } = useSelector((state) => state.globalState);
-  const [posts, setPosts] = useState(null);
-  const getUserPosts = async () => {
-    const { response, error } = await api({
-      url: `getUsersPosts/${user?._id}`,
-    });
-    if (!error) {
-      setPosts(response?.data);
-    }
-  };
+  const { user, userPosts } = useSelector((state) => state.globalState);
+
   useEffect(() => {
     getUserPosts();
   }, []);
   return (
     <div className="flex flex-col gap-y-8">
-      {posts &&
-        posts?.map((post) => (
+      {userPosts &&
+        userPosts?.map((post) => (
           <PostCard
             key={post._id}
+            id={post._id}
             firstName={post.firstName}
             lastName={post.lastName}
             content={post.content}
             title={post.title}
             date={post.createdAt}
-            isUser={post.userId === user?._id}
+            isUser={post.user === user?._id}
+            customFunc={getUserPosts}
           />
         ))}
-      {posts?.length <= 0 && (
-        <EmptyCard
-          desc="No record found yet
-"
-        />
-      )}
+      {userPosts?.length <= 0 && <EmptyCard desc="No record found yet" />}
     </div>
   );
 };

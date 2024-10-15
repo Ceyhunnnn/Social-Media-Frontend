@@ -1,6 +1,7 @@
 import { useState } from "react";
 import General from "./tabbars/General";
 import Account from "./tabbars/Account";
+import { signOut } from "next-auth/react";
 
 const Settings = () => {
   const [selectedMenu, setSelectedMenu] = useState("general");
@@ -32,7 +33,7 @@ const Settings = () => {
           </button>
           <button
             className=" text-sm h-10 flex justify-center items-center"
-            onClick={() => null}
+            onClick={() => signOut()}
           >
             Logout
           </button>

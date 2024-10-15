@@ -5,8 +5,7 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 
 const ProfileHead = () => {
-  const { user } = useSelector((state) => state.globalState);
-
+  const { user, userPosts } = useSelector((state) => state.globalState);
   const { pathname } = useRouter();
   const contentPageList = [
     {
@@ -40,15 +39,17 @@ const ProfileHead = () => {
         </div>
         <div className="flex items-center gap-x-6">
           <span className="flex flex-col justify-center items-center">
-            <h1 className="text-base text-black-80 font-bold">12</h1>
+            <h1 className="text-base text-black-80 font-bold">
+              {userPosts?.length}
+            </h1>
             <p className="text-black-60 text-xs">Posts</p>
           </span>
           <span className="flex flex-col justify-center items-center">
-            <h1 className="text-base text-black-80 font-bold">207</h1>
+            <h1 className="text-base text-black-80 font-bold">0</h1>
             <p className="text-black-60 text-xs">Followers</p>
           </span>
           <span className="flex flex-col justify-center items-center">
-            <h1 className="text-base text-black-80 font-bold">64</h1>
+            <h1 className="text-base text-black-80 font-bold">0</h1>
             <p className="text-black-60 text-xs">Following</p>
           </span>
         </div>

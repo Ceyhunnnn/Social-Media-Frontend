@@ -18,6 +18,7 @@ const PostCard = ({
   title,
   isUser,
   id,
+  customFunc,
 }) => {
   const deletePost = async () => {
     const { response, error } = await api({
@@ -27,6 +28,9 @@ const PostCard = ({
     if (error) {
       toast.error(error);
     } else {
+      if (customFunc) {
+        await customFunc();
+      }
       toast.success(response?.message);
     }
   };
